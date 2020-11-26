@@ -63,11 +63,12 @@ def Init():
     work_dir = os.path.dirname(__file__)
     deck = Deck()
     try:
-        with codecs.open(os.path.join(work_dir, "config.json"), encoding='utf-8-sig') as json_file:
+        with codecs.open(os.path.join(work_dir, "./src/config.json"), encoding='utf-8-sig') as json_file:
             settings = json.load(json_file, encoding='utf-8-sig')
             Creator = settings["creator"]
             Version = settings["version"]
-    except:
+    except Exception as e:
+        log("Default settings used: " + repr(e))
         settings = {
             "commandName" : "!test",
             "responseMessage" : "Command was used by $user",
@@ -75,6 +76,7 @@ def Init():
             "permission" : "Everyone"
             }
     commandName = settings["commandName"]
+    log("Creator: " + Creator)
     log("Deck ready: " + str(deck))
     #log("Deck ready... ")
     return
