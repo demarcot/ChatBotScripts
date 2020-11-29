@@ -1,4 +1,7 @@
 config.json
+config.js
+environment.json
+environment.js
 .vscode/
 *~
 ~*

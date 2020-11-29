@@ -1,0 +1,17 @@
+[
+    {
+        "cmd": "!health",
+        "val1": "Config was processed successfully.",
+        "val2": ""
+    },
+    {
+        "cmd": "!sit",
+        "val1": "$user has taken a seat at the table.",
+        "val2": "Table is full."
+    },
+    {
+        "cmd": "!stand",
+        "val1": "$user has left the table.",
+        "val2": "Stand action could not be used by $user."
+    }
+]

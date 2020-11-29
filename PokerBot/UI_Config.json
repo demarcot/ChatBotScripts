@@ -1,32 +1,17 @@
 {
-    "output_file" : "config.json",
-    "commandName" : {
-        "type" : "textbox",
-        "value" : "!test",
-        "label" : "Command Name",
-        "tooltip" : "Name of the command as it will be used in chat",
-        "group" : "General"
+    "output_file" : "./src/config.json",
+    "tableSize" : {
+        "type": "numberbox",
+        "value": 4,
+        "label": "Table Size",
+        "tooltip": "How many players can be seated?",
+        "group": "General"
     },
-    "responseMessage" : {
-        "type" : "textbox",
-        "value" : "Command was used by $user",
-        "label" : "Response Message",
-        "tooltip" : "The response message to be sent by the chatbot",
-        "group" : "General"
-    },
-    "cooldown" : {
-        "type" : "numberbox",
-        "value" : 15,
-        "label" : "Global Cooldown in seconds",
-        "tooltip" : "How long users must wait before using the command",
-        "group" : "General"
-    },
-    "permission" : {
-        "type" : "dropdown",
-        "value" : "Everyone",
-        "items" : ["Everyone","Regular","Subscriber","Moderator","Editor"],
-        "label" : "Permission Level",
-        "tooltip" : "Specify the user permission level required to use this command",
-        "group" : "General"
+    "stackSize" : {
+        "type": "numberbox",
+        "value": 5000,
+        "label": "Stack Size",
+        "tooltip": "The stack size new players sit with.",
+        "group": "General"
     }
 }
