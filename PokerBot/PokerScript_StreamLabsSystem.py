@@ -3,9 +3,16 @@ import os
 import codecs
 import random
 
+from collections import namedtuple
+
+# Required to properly identify imports in Streamlabs
+import sys
+sys.path.append('.\Services\Scripts\streamlabs_script')
+
+from src.command import Command
 from src.deck import Deck
 from src.table import Table
-from src.command import Command
+from src.player import Player
 
 # Describes issue with whispers:
 #   https://github.com/tmijs/tmi.js/issues/333
@@ -24,6 +31,8 @@ commands = {}
 
 def Init():
     global configs, environment, commands, table
+
+    log("Initiating...")
     work_dir = os.path.dirname(__file__)
     try:
         with codecs.open(os.path.join(work_dir, "./src/config/config.json"), encoding='utf-8-sig') as configs_json:
@@ -92,6 +101,11 @@ def log(message):
     Parent.Log(ScriptName, message)
     return
 
+def convertDictToObject(jsonObj):
+    return namedtuple('X', jsonObj.keys())(*jsonObj.values())
+
+def convertDictToCommand(jsonObj):
+    return Command(jsonObj['cmd'], jsonObj['val1'], jsonObj['val2'])
 
 def main():
     global configs, environment, commands
@@ -102,17 +116,18 @@ def main():
         with codecs.open(os.path.join(work_dir, "./src/config/environment.json"), encoding='utf-8-sig') as environment_json:
             environment = json.load(environment_json, encoding='utf-8-sig')
         with codecs.open(os.path.join(work_dir, "./src/config/commands.json"), encoding='utf-8-sig') as commands_json:
-            commands = json.load(commands_json, encoding='utf-8-sig')
+            commands = json.load(commands_json, encoding='utf-8-sig', object_hook=Command.ConvertDictToObj)
     except Exception as e:
         print("Error on config reads: " + repr(e))
     
 
-    print("Command 1: " + commands[0]['cmd'])
+    print("Command: " + str(commands[0]))
+    print("Command: " + str(commands[1]))
     table = Table()
     table.openTable()
-    table.addPlayer([])
-    table.addPlayer([])
-    table.addPlayer([])
+    table.addPlayer(Player("tom", configs['stackSize'], []))
+    table.addPlayer(Player("bob", configs['stackSize'], []))
+    table.addPlayer(Player("jon", configs['stackSize'], []))
     table.dealHand()
     for p in table.players:
         print("Player Hand: " + str(p))

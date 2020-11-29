@@ -21,7 +21,7 @@ class Table:
         self.deck.resetDeck()
         for i in range(2):
             for p in self.players:
-                p.append(self.deck.dealCard())
+                p.hand.append(self.deck.dealCard())
         
         return
 
