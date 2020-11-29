@@ -1,5 +1,5 @@
 {
-    "output_file" : "./src/config.json",
+    "output_file" : "./src/config/config.json",
     "tableSize" : {
         "type": "numberbox",
         "value": 4,

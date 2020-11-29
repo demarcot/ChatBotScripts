@@ -3,5 +3,6 @@ config.js
 environment.json
 environment.js
 .vscode/
+*.pyc
 *~
 ~*
