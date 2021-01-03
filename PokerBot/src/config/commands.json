@@ -1,17 +1,80 @@
 [
     {
         "cmd": "!health",
+        "permission": "Everyone",
         "val1": "Config was processed successfully.",
         "val2": ""
     },
     {
         "cmd": "!sit",
+        "permission": "Everyone",
         "val1": "$user has taken a seat at the table.",
         "val2": "Table is full."
     },
     {
         "cmd": "!stand",
+        "permission": "Everyone",
         "val1": "$user has left the table.",
         "val2": "Stand action could not be used by $user."
+    },
+    {
+        "cmd": "!peek",
+        "permission": "Everyone",
+        "val1": "You hold $c1 and $c2",
+        "val2": "You have no hand."
+    },
+    {
+        "cmd": "!flip_table",
+        "permission": "Everyone",
+        "val1": "Game ended.",
+        "val2": "Game could not be ended."
+    },
+    {
+        "cmd": "!open_table",
+        "permission": "Everyone",
+        "val1": "Table is open.",
+        "val2": "Table could not be opened."
+    },
+    {
+        "cmd": "!bet",
+        "permission": "Everyone",
+        "val1": "Amount bet: $bet Stack amount: $stack",
+        "val2": ""
+    },
+    {
+        "cmd": "!check",
+        "permission": "Everyone",
+        "val1": "Stack amount: $stack",
+        "val2": ""
+    },
+    {
+        "cmd": "!call",
+        "permission": "Everyone",
+        "val1": "Amount bet: $bet Stack amount: $stack",
+        "val2": "Could not call."
+    },
+    {
+        "cmd": "!fold",
+        "permission": "Everyone",
+        "val1": "$user has folded.",
+        "val2": ""
+    },
+    {
+        "cmd": "!all_in",
+        "permission": "Everyone",
+        "val1": "Amount bet: $bet Stack amount: $stack",
+        "val2": ""
+    },
+    {
+        "cmd": "!set_blinds",
+        "permission": "Everyone",
+        "val1": "Blinds are: $sBlind / $bBlind",
+        "val2": ""
+    },
+    {
+        "cmd": "!kick",
+        "permission": "Everyone",
+        "val1": "$user kicked.",
+        "val2": ""
     }
 ]

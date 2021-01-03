@@ -13,5 +13,26 @@
         "label": "Stack Size",
         "tooltip": "The stack size new players sit with.",
         "group": "General"
+    },
+    "smallBlind" : {
+        "type": "numberbox",
+        "value": 25,
+        "label": "Small Blind",
+        "tooltip": "The default small blind for the table.",
+        "group": "General"
+    },
+    "bigBlind" : {
+        "type": "numberbox",
+        "value": 50,
+        "label": "Big Blind",
+        "tooltip": "The default big blind for the table.",
+        "group": "General"
+    },
+    "rebuys" : {
+        "type": "numberbox",
+        "value": 2,
+        "label": "Rebuys",
+        "tooltip": "The number of rebuys in an open table for a single user.",
+        "group": "General"
     }
 }

@@ -3,11 +3,17 @@ import os
 import codecs
 import random
 
+
 from collections import namedtuple
 
 # Required to properly identify imports in Streamlabs
 import sys
-sys.path.append('.\Services\Scripts\streamlabs_script')
+sys.path.append('.\Services\Scripts\PokerBot')
+sys.path.append(os.path.join(os.path.dirname(__file__), "lib")) #point at lib folder for classes / references
+
+import clr
+clr.AddReference("IronPython.Modules.dll")
+clr.AddReference("System.Windows.Forms")
 
 from src.command import Command
 from src.deck import Deck
@@ -40,7 +46,7 @@ def Init():
         with codecs.open(os.path.join(work_dir, "./src/config/environment.json"), encoding='utf-8-sig') as environment_json:
             environment = json.load(environment_json, encoding='utf-8-sig')
         with codecs.open(os.path.join(work_dir, "./src/config/commands.json"), encoding='utf-8-sig') as commands_json:
-            commands = json.load(commands_json, encoding='utf-8-sig')
+            commands = json.load(commands_json, encoding='utf-8-sig', object_hook=Command.ConvertDictToObj)
     except Exception as e:
         log("Default settings used: " + repr(e))
         configs = {
@@ -60,12 +66,14 @@ def Init():
     return
 
 def Execute(data):
-    if data.IsChatMessage() and (commands.data.GetParam(0).lower()) and Parent.HasPermission(data.User, configs["permission"], "") and not Parent.IsOnUserCooldown(ScriptName, data.GetParam(0).lower(), data.User):
+    curCommand = FetchCommand(data.GetParam(0).lower())
+    if data.IsChatMessage() and Parent.HasPermission(data.User, curCommand.permission, "") and not Parent.IsOnUserCooldown(ScriptName, data.GetParam(0).lower(), data.User):
+        log("In Message handler." + str(curCommand))
         username = data.UserName
         points = Parent.GetPoints(data.User)
         currency = Parent.GetCurrencyName()
         
-        responseMessage = configs["responseMessage"]
+        responseMessage = curCommand.val1
         responseMessage = responseMessage.replace("$user", data.UserName)
         send_message(responseMessage)
 
@@ -79,6 +87,12 @@ def Execute(data):
 def DoStuff():
     log("stuff has happened!")
     return
+
+def FetchCommand(cmdName):
+    for c in commands:
+        if c.cmd == cmdName:
+            return c
+    return None
 
 def Tick():
     return
@@ -105,8 +119,9 @@ def convertDictToObject(jsonObj):
     return namedtuple('X', jsonObj.keys())(*jsonObj.values())
 
 def convertDictToCommand(jsonObj):
-    return Command(jsonObj['cmd'], jsonObj['val1'], jsonObj['val2'])
+    return Command(jsonObj['cmd'], jsonObj['permission'], jsonObj['val1'], jsonObj['val2'])
 
+'''
 def main():
     global configs, environment, commands
     work_dir = os.path.dirname(__file__)
@@ -136,3 +151,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+'''
