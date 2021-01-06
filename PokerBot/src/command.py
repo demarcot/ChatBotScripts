@@ -7,6 +7,7 @@ class Command:
         self.permission = permission
         self.val1 = val1
         self.val2 = val2
+        #self.dispatch = command_dispatch[dispatch]
         return
 
     def __str__(self):
