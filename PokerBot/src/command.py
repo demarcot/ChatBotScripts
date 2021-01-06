@@ -1,18 +1,17 @@
+import src.command_dispatch as command_dispatch
 
 
 class Command:
 
-    def __init__(self, cmd, permission, val1, val2):
+    def __init__(self, cmd, permission, dispatch):
         self.cmd = cmd
         self.permission = permission
-        self.val1 = val1
-        self.val2 = val2
-        #self.dispatch = command_dispatch[dispatch]
+        self.dispatch = getattr(command_dispatch, dispatch)
         return
 
     def __str__(self):
-        return '{ "cmd": "' + self.cmd + '", "permission": "' + self.permission + '", "val1": "' + self.val1 + '", "val2": "' + '"}'
+        return '{ "cmd": "' + self.cmd + '", "permission": "' + self.permission + '", "dispatch": "' + self.dispatch.__name__ + '"}'
 
     @staticmethod
     def ConvertDictToObj(jsonObj):
-            return Command(jsonObj['cmd'], jsonObj['permission'], jsonObj['val1'], jsonObj['val2'])
+        return Command(jsonObj['cmd'], jsonObj['permission'], jsonObj['dispatch'])

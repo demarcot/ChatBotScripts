@@ -2,79 +2,66 @@
     {
         "cmd": "!health",
         "permission": "Everyone",
-        "val1": "Config was processed successfully.",
-        "val2": ""
+        "dispatch": "health"
     },
     {
         "cmd": "!sit",
         "permission": "Everyone",
-        "val1": "$user has taken a seat at the table.",
-        "val2": "Table is full."
+        "dispatch": "sit"
     },
     {
         "cmd": "!stand",
         "permission": "Everyone",
-        "val1": "$user has left the table.",
-        "val2": "Stand action could not be used by $user."
+        "dispatch": "stand"
     },
     {
         "cmd": "!peek",
         "permission": "Everyone",
-        "val1": "You hold $c1 and $c2",
-        "val2": "You have no hand."
+        "dispatch": "peek"
     },
     {
         "cmd": "!flip_table",
         "permission": "Everyone",
-        "val1": "Game ended.",
-        "val2": "Game could not be ended."
+        "dispatch": "flipTable"
     },
     {
         "cmd": "!open_table",
         "permission": "Everyone",
-        "val1": "Table is open.",
-        "val2": "Table could not be opened."
+        "dispatch": "openTable"
     },
     {
         "cmd": "!bet",
         "permission": "Everyone",
-        "val1": "Amount bet: $bet Stack amount: $stack",
-        "val2": ""
+        "dispatch": "bet"
     },
     {
         "cmd": "!check",
         "permission": "Everyone",
-        "val1": "Stack amount: $stack",
-        "val2": ""
+        "dispatch": "check"
     },
     {
         "cmd": "!call",
         "permission": "Everyone",
-        "val1": "Amount bet: $bet Stack amount: $stack",
-        "val2": "Could not call."
+        "dispatch": "call"
     },
     {
         "cmd": "!fold",
         "permission": "Everyone",
-        "val1": "$user has folded.",
-        "val2": ""
+        "dispatch": "fold"
     },
     {
         "cmd": "!all_in",
         "permission": "Everyone",
-        "val1": "Amount bet: $bet Stack amount: $stack",
-        "val2": ""
+        "dispatch": "allIn"
     },
     {
         "cmd": "!set_blinds",
         "permission": "Everyone",
-        "val1": "Blinds are: $sBlind / $bBlind",
-        "val2": ""
+        "dispatch": "setBlinds"
     },
     {
         "cmd": "!kick",
         "permission": "Everyone",
-        "val1": "$user kicked.",
-        "val2": ""
+        "dispatch": "kick"
     }
 ]
