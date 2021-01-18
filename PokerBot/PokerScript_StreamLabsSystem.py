@@ -121,20 +121,6 @@ class ScriptState:
     def DispatchCommand(self, cmd, parent, data, params):
         sutils.log(parent, "Dispatching command: " + str(cmd) + ", " + str(data))
         cmd.dispatch(parent, data, params)
-        #responseMessage = cmd.val1
-        #responseMessage = responseMessage.replace("$user", data.UserName)
-        #send_message(responseMessage)
-        #TODO(Tom): Use this if bot is ever cleared for whispers
-        #send_whisper(data.UserName, responseMessage)
-        
-        #Parent.AddUserCooldown(ScriptName, commandName, data.User, settings["cooldown"])
-        #Parent.RemovePoints(data.User, username, cost)
-        #username = data.UserName
-        #points = Parent.GetPoints(data.User)
-        #currency = Parent.GetCurrencyName()
-        #responseMessage = curCommand.val1
-        #responseMessage = responseMessage.replace("$user", data.UserName)
-        #send_message(responseMessage)
         return
 
 
